@@ -33,3 +33,6 @@ const input=document.getElementById('search');if(input)input.addEventListener('i
 if(page==='lesson'){last=document.body.dataset.lesson;save('last',last);document.getElementById('mark').onclick=()=>{done.has(last)?done.delete(last):done.add(last);save('done',[...done]);refresh()}};
 if(page==='simulado')quiz();else refresh();
 window.addEventListener('pageshow',()=>{done=new Set(read('done',[]));last=read('last',null);dark=read('dark',false);document.body.classList.toggle('dark',dark);refresh()});
+
+// Assistente de revisão: integra automaticamente todos os menus e aulas.
+(()=>{const script=document.createElement('script');script.src=new URL('assistente-integracao.js',document.currentScript.src).href;script.defer=true;document.head.appendChild(script);})();
